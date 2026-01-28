@@ -1,0 +1,52 @@
+https://github.com/mainangaruiya/RAG-AI
+
+
+uv init .
+
+uv add fastapi inngest llama-index-core llama-index-readers-file python-dotenv qdrant-client uvicorn streamlit openai
+
+uv run uvicorn main:app
+
+Terminal 1:
+$ uv run uvicorn main:app
+INFO:     Started server process [44864]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:43448 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43448 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+
+terminal2:
+npx inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
+(rag-ai) maina@maina:~/PycharmProjects/RAG-AI$ npx inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
+Need to install the following packages:
+inngest-cli@1.16.1
+Ok to proceed? (y) y
+
+[11:04:04.429] INF starting executor grpc server svc=executor addr=:50053
+[11:04:04.431] INF starting event stream backend=redis
+[11:04:04.431] INF service starting caller=devserver service=devserver
+[11:04:04.431] INF service starting caller=runner service=runner
+[11:04:04.431] INF service starting caller=executor service=executor
+[11:04:04.431] INF subscribing to function queue
+[11:04:04.432] INF service starting caller=api service=api
+[11:04:04.432] INF starting server caller=api addr=0.0.0.0:8288
+[11:04:04.433] INF service starting caller=connect-gateway service=connect-gateway
+[11:04:04.433] INF starting connect gateway grpc server caller=connect-gateway addr=:50052
+[11:04:04.440] INF subscribing to events topic=events
+
+
+        Inngest Dev Server online at 0.0.0.0:8288, visible at the following URLs:
+
+         - http://127.0.0.1:8288 (http://localhost:8288)
+         - http://192.168.34.193:8288
+         - http://172.18.0.1:8288
+         - http://172.19.0.1:8288
+         - http://172.17.0.1:8288
+
+
+docker run -d --name qdrantRgDb -p 6333:6333 -v "$(pwd)/qdrant_storage:/qdrant/storage" qdrant/qdrant
+
+
+uv run streamlit_app.py
+uv run streamlit run streamlit_app.py
